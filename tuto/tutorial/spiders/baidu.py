@@ -55,6 +55,9 @@ class BaiduSpider(Spider):
         #print results
         time = datetime.datetime.now(self.tz)
 
+        from scrapy.shell import inspect_response
+        inspect_response(response,self)
+
         for res in results:
             #print res.extract()
             url = res.xpath('.//h3[contains(@class,"t")]/a/@href').extract_first()
@@ -107,3 +110,4 @@ class BaiduSpider(Spider):
             item['keyword'] = unicode(keyword)
             item['create_time'] = time.strftime('%Y_%m_%d_%H_%M_%S')
             yield item
+

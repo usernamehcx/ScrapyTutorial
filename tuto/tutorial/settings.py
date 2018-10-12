@@ -15,8 +15,13 @@ SPIDER_MODULES = ['tutorial.spiders']
 NEWSPIDER_MODULE = 'tutorial.spiders'
 
 
+import os
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
+MONGODB_HOST = os.getenv("MONGO_HOST", "127.0.0.1")
+MONGODB_PORT = (int)(os.getenv("MONGO_PORT", 27017))
+MONGODB_DBNAME = os.getenv("MONGO_DBNAME", "Spider")
+
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -43,6 +48,7 @@ ROBOTSTXT_OBEY = False
 #   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 #   'Accept-Language': 'en',
 #}
+
 DEFAULT_REQUEST_HEADERS = {
     'Host': 'www.baidu.com',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:57.0) Gecko/20100101 Firefox/57.0',
@@ -50,6 +56,7 @@ DEFAULT_REQUEST_HEADERS = {
     'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
     'Accept-Encoding': 'gzip, deflate, br',
 }
+
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
@@ -76,6 +83,7 @@ DEFAULT_REQUEST_HEADERS = {
 #}
 ITEM_PIPELINES = {
     'tutorial.pipelines.TutorialPipeline': 300,
+    'tutorial.pipelines.MongoPipeline':400,
 }
 
 
