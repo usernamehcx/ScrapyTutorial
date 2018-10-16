@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from scrapy.spiders import Spider
-from weibo.items import WeiboItem
+from items import WeiboItem
 import scrapy
 import pytz
 import json
@@ -69,26 +69,27 @@ class WeiboSpider(Spider):
 
     def start_requests(self):
 
-        cookies = { "YF-Ugrow-G0":"57484c7c1ded49566c905773d5d00f82",
-                    "login_sid_t":"6ca8ea9621860078d63358931b537fa1",
-                    "cross_origin_proto":"SSL",
-                    "YF-V5-G0":"590253f9bb559fcb4f19c58020522401",
-                    "_s_tentry":"passport.weibo.com",
-                    "Apache":"1932791264390.1345.1539329867676",
-                    "SINAGLOBAL":"1932791264390.1345.1539329867676",
-                    "ULV":"1539329867684:1:1:1:1932791264390.1345.1539329867676:",
-                    "WBStorage":"e8781eb7dee3fd7f|undefined",
-                    "wb_view_log":"1440*9002",
-                    "UOR":",,www.baidu.com",
-                    "SUBP":"0033WrSXqPxfM725Ws9jqgMF55529P9D9W5DNKRT0qumQKo-Z50HRAr_5JpX5K2hUgL.Fo-0eoMNeh50Shn2dJLoI79VIrHQqNnt",
-                    "ALF":"1571212859",
-                    "SSOLoginState":"1539676860",
-                    "SCF":"AmHun9sz-Io-fLCss7-KTP1j6DdW8VXmTga-w8C3dkAWGHT_RrmDLI9BKE6DNGHo1r3fS7CruP2tfWwv0BXbA_Q.",
-                    "SUB":"_2A252weruDeRhGeNN6VUW8C7PzzSIHXVVt1smrDV8PUNbmtBeLRTVkW9NSdFig5QZV9sWNTTHry4pI8ZbW2EGjEFv",
-                    "SUHB":"0OMUdt6daCy9_g",
-                    "un":"18169209977"
-                    }
+        # cookies = { "YF-Ugrow-G0":"57484c7c1ded49566c905773d5d00f82",
+        #             "login_sid_t":"6ca8ea9621860078d63358931b537fa1",
+        #             "cross_origin_proto":"SSL",
+        #             "YF-V5-G0":"590253f9bb559fcb4f19c58020522401",
+        #             "_s_tentry":"passport.weibo.com",
+        #             "Apache":"1932791264390.1345.1539329867676",
+        #             "SINAGLOBAL":"1932791264390.1345.1539329867676",
+        #             "ULV":"1539329867684:1:1:1:1932791264390.1345.1539329867676:",
+        #             "WBStorage":"e8781eb7dee3fd7f|undefined",
+        #             "wb_view_log":"1440*9002",
+        #             "UOR":",,www.baidu.com",
+        #             "SUBP":"0033WrSXqPxfM725Ws9jqgMF55529P9D9W5DNKRT0qumQKo-Z50HRAr_5JpX5K2hUgL.Fo-0eoMNeh50Shn2dJLoI79VIrHQqNnt",
+        #             "ALF":"1571212859",
+        #             "SSOLoginState":"1539676860",
+        #             "SCF":"AmHun9sz-Io-fLCss7-KTP1j6DdW8VXmTga-w8C3dkAWGHT_RrmDLI9BKE6DNGHo1r3fS7CruP2tfWwv0BXbA_Q.",
+        #             "SUB":"_2A252weruDeRhGeNN6VUW8C7PzzSIHXVVt1smrDV8PUNbmtBeLRTVkW9NSdFig5QZV9sWNTTHry4pI8ZbW2EGjEFv",
+        #             "SUHB":"0OMUdt6daCy9_g",
+        #             "un":"***********"
+        #             }
 
+        cookies = {}
         url_p1 = 'https://s.weibo.com/weibo?q='
         url_p2 = '&wvr=6&b=1&Refer=SWeibo_box&page='
 
